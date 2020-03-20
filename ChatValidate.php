@@ -18,9 +18,8 @@ include "AXIEncrypt.php";
 	
 	$client = $conn->real_escape_string($client);
 	
-	$browser = $conn->real_escape_string($browser);
 	
-	$sql = "SELECT * FROM ChatBanned WHERE IP = \"$ip\" AND Browser = \"$browser\"";
+	$sql = "SELECT * FROM ChatBanned WHERE IP = \"$ip\"";
 	$usrval = $conn->query($sql);
 	if ($usrval->num_rows > 0) {
 		header("Location: /ChatLogin.php?result=usrbanned");
@@ -30,7 +29,7 @@ include "AXIEncrypt.php";
 	$usrval = $conn->query($sql);
 	if ($usrval->num_rows > 0) {
 		$usrrow = $usrval->fetch_assoc();
-		if (($usrrow["IP"] == $ip) && ($usrrow["BrowserAgent"] == $browser)) {
+		if ($usrrow["IP"] == $ip) {
 			$newclient = false;
 		}
 		else {
@@ -43,8 +42,8 @@ include "AXIEncrypt.php";
 	$conn->query($sql);
 
 	$sessID = newSessionID($client);
-	$sql = "INSERT INTO ChatRef (Username, IP, Sessionid, BrowserAgent, Cookie) values ";
-	$sql .= "(\"$client\", \"$ip\", \"$sessID\", \"$browser\", \"$pID\");";
+	$sql = "INSERT INTO ChatRef (Username, IP, Sessionid, Cookie) values ";
+	$sql .= "(\"$client\", \"$ip\", \"$sessID\", \"$pID\");";
 	if ($conn->query($sql) === TRUE) {
 		$sql = "SELECT * FROM ChatUsers WHERE Username = \"$client\"";
 		$usrval = $conn->query($sql);
