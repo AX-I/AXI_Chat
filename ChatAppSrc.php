@@ -102,7 +102,7 @@ else {
 
 				setcookie("IDHash", "", time()-100);
 				setcookie("UserID", "", time()-100);
-				header("Location: http://app.axi.x10.mx/Chat/ChatLogin.php");
+				header("Location: /ChatLogin.php");
 
 		}
 	}
