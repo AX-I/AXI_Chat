@@ -23,7 +23,7 @@ else {
 	
 	$servername = "localhost";
 	$username = "AXI_1";
-	$password = "r94tni+oC^4@";
+	$password = "r94tni+oC^4@"; // Definitely the real password
 
 	$conn = new mysqli($servername, $username, $password);
 
