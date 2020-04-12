@@ -13,7 +13,7 @@ function getUser($ipaddr, $sessID) {
 	$ruser = "";
 	$servername = "localhost";
 	$username = "AXI_1";
-	$password = "r94tni+oC^4@";
+	$password = "r94tni+oC^4@"; // Definitely the real password
 	$conn = new mysqli($servername, $username, $password);
 	if ($conn->connect_error) {
 	    die("Connection failed.");
